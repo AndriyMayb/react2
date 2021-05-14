@@ -42,22 +42,7 @@
 
 
 
-// import {useState} from "react";
-//
-// export default function App () {
-//     let [counter,setCounter] = useState(0)
-//     let increment = () => setCounter(++counter);
-//
-// return (<div>
-//    it is {counter}
-//     <button onClick={increment}>increment</button>
-//
-// </div>)
-//
-//
-// }
 
-//import User from "./components/userScript/user.Script";
 
 import User from "./components/userScript/user.Script";
 import {useState} from "react";
@@ -76,30 +61,34 @@ const usersList = [
     {name: 'max', age: 31, isMarried: true}
 ];
 export default function App () {
-let [users,setUsers] = useState(usersList)
-let deleteUser = () =>{
-    users.pop()
-    setUsers([...users])
-}
-let [countre,setCountre] = useState(0)
-    let decrement = () =>setCountre(++countre)
-    let increment = () =>setCountre(--countre)
-    let reset = () => setCountre(0)
-return (
-    <div>
-        <div>
-            ITS A - {countre}
-            <button onClick={decrement}>decrement</button>
-            <button onClick={increment}>increment</button>
-            <button onClick={reset}>RESET</button>
-        </div>
-        <div> {
-            users.map((value, index) => <User
-                kay={index}
-                {...value}/>)
+    let [users,setUsers] = useState(usersList)
+    let deleteUsers = ()=>{
+        users.pop()
+        setUsers([...users])
+    }
+        let [countre,setCountre] = useState(0)
+        let increment = ()=> {
+            setCountre(++countre)
         }
-            <button onClick={deleteUser}>deleteUser</button>
+        let decrement = ()=>setCountre(--countre)
+        let reset = () => setCountre(0)
+
+    return (
+        <div>
+            <div>
+                ITS a --{countre}
+                <button onClick={increment}> INCREMENT</button>
+                <button onClick={decrement}>DECREMENT</button>
+                <button onClick={reset}>RESET</button>
+
+            </div>
+            <div>
+                {
+                    users.map((value, index) =>
+                        <User key = {index} {...value} />)
+                }
+                    <button onClick={deleteUsers}>deleteUsers</button>
+            </div>
         </div>
-    </div>
-)
-}
+    )
+    }
